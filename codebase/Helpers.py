@@ -58,7 +58,7 @@ def bin_spatial(img, size=(32, 32)):
     :return: Feature Vector
     """
     # User cv2.resize().ravel() to create a feature vector
-    features = cv2.resize(feature_image, size).ravel()
+    features = cv2.resize(img, size).ravel()
     return features
 
 def get_hog_features(img, orient, pix_per_cell, cell_per_block, vis=False, feature_vec=True):
@@ -90,9 +90,10 @@ def get_hog_features(img, orient, pix_per_cell, cell_per_block, vis=False, featu
                                   feature_vector=feature_vec)
         return features
 
-def extract_features(imgs, cpace='RGB', spatial_size=(32, 32), hist_bins=32, hist_range=(0, 256)):
+def extract_features(imgs, cspace='RGB', spatial_size=(32, 32), hist_bins=32, hist_range=(0, 256)):
     """
     Function to extract features from a list of images
+    Reference: Chapter 22 - Combine and Normalize Features (Lesson 22)
     :param imgs: List of Images
     :param cpace: String (Color Space)
     :param spatial_size: 2D Tuple
@@ -131,6 +132,6 @@ def extract_features(imgs, cpace='RGB', spatial_size=(32, 32), hist_bins=32, his
         hist_features = color_hist(feature_image, nbins=hist_bins, bins_range=hist_range)
 
         # Append the new feature vector to the features list
-        features.append(np.concatenate(spatial_features, hist_features))
+        features.append(np.concatenate((spatial_features, hist_features)))
 
     return features
