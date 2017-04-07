@@ -1,4 +1,4 @@
 *.ipynb
 *.mp4
-/vehicles_smallset
-/non-vehicles_smallset
+/vehicles_smallset/**/*.jpeg
+/non-vehicles_smallset/**/*.jpeg
