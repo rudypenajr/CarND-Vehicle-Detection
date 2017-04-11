@@ -4,3 +4,7 @@
 /non-vehicles_smallset/**/*.jpeg
 /codebase/vehicles/**/*png
 /codebase/non-vehicles/**/*png
+/explore_color_spaces/*.png
+/.ipynb_checkpoints/*.ipynb
+/codebase/.ipynb_checkpoints/*.ipynb
+*.zip
