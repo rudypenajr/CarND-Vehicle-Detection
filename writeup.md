@@ -153,4 +153,6 @@ I used the heatmap technique that was presented in the lesson to find overlappin
 
 The problems / issues I faced were mainly around heatmap and scaling. Heatmap took me a while to get a hang of, that turned out to be simpler than I thought. Scaling still somewhat gives me a whirlwind but I think I got the grasp of it. We were able to find cars that were further/closer and smaller by scaling up and down the region.
 
-As like the other projects, I wander if what we have built will work in all conditions. I don't know if we have the right color space if it wasn't a sunny day.
+The other problem I faced which you will see in the video is that it starts off with the drawn blocks immediately. I am still trying to debug as to why.
+
+As like the other projects, I wander if what we have built will work in all conditions. I don't think we have the right color space if it wasn't a sunny day.
