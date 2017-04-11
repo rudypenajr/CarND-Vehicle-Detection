@@ -2,3 +2,5 @@
 *.mp4
 /vehicles_smallset/**/*.jpeg
 /non-vehicles_smallset/**/*.jpeg
+/codebase/vehicles/**/*png
+/codebase/non-vehicles/**/*png
