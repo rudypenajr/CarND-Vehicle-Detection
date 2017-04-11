@@ -42,15 +42,15 @@ class HeatMapper():
         # Return thresholded map
         return self.heatmap
 
-    def compute_heatmap(self, bbox_list, threshold=1):
-        # print('Compute Heatmap Treshold: ', threshold)
+    # def compute_heatmap(self, bbox_list, threshold=1):
+    #     # print('Compute Heatmap Treshold: ', threshold)
+    #
+    #     self.heatmap = np.zeros(self.img_shape).astype(np.float)
+    #     self.add_heat(bbox_list)
+    #     self.apply_threshold(threshold)
+    #     return self.thresholded_heatmap
 
-        self.heatmap = np.zeros(self.img_shape).astype(np.float)
-        self.add_heat(bbox_list)
-        self.apply_threshold(threshold)
-        return self.thresholded_heatmap
-
-    def compute_heatmapN(self, bbox_list, threshold=10):
+    def compute_heatmap(self, bbox_list, threshold=10):
         self.multi_boxes_list.append(bbox_list)
         # print("Threshold: ", threshold)
         # print("Multi Boxes List:", self.multi_boxes_list)

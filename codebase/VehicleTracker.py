@@ -34,7 +34,7 @@ class VehicleTracker():
                                              spatial_size, hist_bins, svc_threshold)
 
         # Apply Heatmap
-        heatmap = self.heatmap.compute_heatmapN(box_list,threshold)
+        heatmap = self.heatmap.compute_heatmap(box_list,threshold)
         labels = label(heatmap)
         final_img = self.heatmap.draw_labeled_bboxes(np.copy(img), labels)
 
@@ -71,9 +71,9 @@ class VehicleTracker():
         box_list = box_list1 + box_list2
 
         # Apply Heatmap
-        heatmap = self.heatmap.compute_heatmapN(box_list,threshold)
+        heatmap = self.heatmap.compute_heatmap(box_list,threshold)
         labels = label(heatmap)
-        final_img = draw_labeled_bboxes(np.copy(img), labels)
+        final_img = self.heatmap.draw_labeled_bboxes(np.copy(img), labels)
 
         return final_img
 
