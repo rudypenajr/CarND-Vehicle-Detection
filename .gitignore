@@ -1,5 +1,6 @@
-.idea/inspectionProfiles/*.xml
-.idea/*.xml
+/.idea/inspectionProfiles/*.xml
+/.idea/*.xml
+/.idea/*.iml
 /.ipynb_checkpoints/*.ipynb
 /codebase/.ipynb_checkpoints/*.ipynb
 /codebase/vehicles/**/*png
