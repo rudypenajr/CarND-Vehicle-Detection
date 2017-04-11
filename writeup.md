@@ -92,7 +92,7 @@ Lots of this logic comes from what was taught within this lesson. As we evolved 
 * HOG Vector Size >> `42 x 42 x 3` (5292)
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
-I believe `#1` answers this question. 
+I believe `#1` answers this question.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
@@ -104,6 +104,8 @@ The codebase for the classifier can be found at:
 
 * `/codebase/CarClassifier.py`
 * `/codebase/VehicleTracker.py` >> `init` [line 10]
+* `/codebase/dependencies/car_classifier.pkl`
+* `/codebase/dependencies/car_feature_scaler.pkl`
 
 ---
 ### Sliding Window Search
@@ -127,29 +129,28 @@ The codebase for this can be found at:
 #### 2. Show some examples of test images to demonstrate how your pipeline is working. What did you do to optimize the performance of your classifier?
 I believe `#1` in Sliding Window Search may have answered this question. One thing to add though is that within the color histogram, finding that right color space really improved the performance of the classifer. `RGB` vs. `LUV`, for example, `RGB` gave a better result. In the end though, `YCrCb` gave us the better result.  
 
---- 
+---
 ### Video Implementation
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./codebase/project_output_yuv.mp4).
+Here's a [link to my video result](./codebase/project_output.mp4).
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I used the heatmap technique that was presented in the lesson to find overlapping bounding boxes. As for the outliers, we look at the last N frames - N is chosen as 10 - and those objects which are consistent in some of the frames. Because there are multiple detections on different scales and overlapping windows, we need to merge nearby detections. To do that, we calculate a heatmap of intersection regions that were clasified as containing vehicles. We then have to merge heatmaps from multiple scales and frames, allowing us to threshold the heatmap. We use the `label()` module to detect indiviudal groups of detectsion and caclualte the bounding rectangular region for each of them.
+I used the heatmap technique that was presented in the lesson to find overlapping bounding boxes. As for the outliers, we look at the last N frames - N is chosen as 10 - and those objects which are consistent in some of the frames. Because there are multiple detections on different scales and overlapping windows, we need to merge nearby detections. To do that, we calculate a heatmap of intersection regions that were classified as containing vehicles. We then have to merge heatmaps from multiple scales and frames, allowing us to threshold the heatmap. We use the `label()` module to detect indiviudal groups of detectsion and caclualte the bounding rectangular region for each of them.
 
 * `/codebase/HeatMapper.py`
 * `/codebase/HeatMapper.py` >> `compute_heatmap` [line 53-67]
 * `/codebase/VehicleTracker.py` >> `pipeline` [line 37-39]
 * `/codebase/VehicleTracker.py` >> `video_pipeline` [line 74-77]
 
-
 ![Heatmap](./output_images/heatmap_image_detection.jpg)
 
 ![Final](./output_images/final_image_detection.jpg)
 
-
+---
 ### Discussion
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail? What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.
+The problems / issues I faced were mainly around heatmap and scaling. Heatmap took me a while to get a hang of, that turned out to be simpler than I thought. Scaling still somewhat gives me a whirlwind but I think I got the grasp of it. We were able to find cars that were further/closer and smaller by scaling up and down the region.
 
-
+As like the other projects, I wander if what we have built will work in all conditions. I don't know if we have the right color space if it wasn't a sunny day.
